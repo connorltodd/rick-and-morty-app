@@ -1,15 +1,16 @@
-import { Switch, Link, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import CharacterList from './components/CharacterList';
 import About from './components/About';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div className="App">
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
-      <Switch>
-      <Route exact path="/" component={CharacterList} />
-      <Route path="/about" component={About} />
+    <div>
+      <Navbar />
+        <Switch>
+          <Route path="/characters" component={CharacterList} />
+          <Route path="/about" component={About} />
+          <Redirect to="/characters" />
       </Switch>
     </div>
   );
