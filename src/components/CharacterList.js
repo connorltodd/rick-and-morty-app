@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import Character from "./Character";
 import Navbar from './Navbar';
+import Searchbar from './Searchbar';
 
 class CharacterList extends React.Component {
     state = {
@@ -17,11 +18,19 @@ class CharacterList extends React.Component {
         axios.get('https://rickandmortyapi.com/api/character/')
         .then(response => this.setState({ characters : response.data.results }))
     }
+
+    searchCharacters = (event) => {
+        const searchValue = event.target.value
+       
+        axios.get(`https://rickandmortyapi.com/api/character/?name=${searchValue}`)
+        .then(response => this.setState({ characters : response.data.results }))
+    }
     
 
         render () {
             return (
             <div>
+                <Searchbar searchInputFunction={this.searchCharacters} />
                 <div 
                 className="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 justify-content-center mt-5 mb-5"
                 >
