@@ -1,0 +1,9 @@
+.searchbar {
+    width: 500px;
+    margin: auto;
+    padding-top: 50px;
+}
+
+.searchbar-input {
+    width: 100%;
+}
